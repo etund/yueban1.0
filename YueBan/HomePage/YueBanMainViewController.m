@@ -12,6 +12,7 @@
 #import "AddSongViewController.h"
 
 #import "YBDevice.h"
+#import "DataService.h"
 
 
 @interface YueBanMainViewController ()
@@ -113,7 +114,7 @@
     UIImage *img = [UIImage imageNamed:@"defaultcover"];
     for(int i=0;i<[self.songList count];i++)
     {
-        NSString *url= [NSString stringWithFormat:@"http://10.67.55.60:8080/Foundation%@",self.songList[i].songURL];
+        NSString *url= [NSString stringWithFormat:@"http://%@/Foundation%@",SERVER_IP,self.songList[i].songURL];
         NSDictionary *dict = [NSDictionary dictionaryWithObjectsAndKeys:self.songList[i].songName,@"song",self.songList[i].singer,@"singer",url,@"url",img,@"cover",nil];
         [urlArrays addObject:dict];
     }

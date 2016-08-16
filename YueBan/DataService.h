@@ -6,6 +6,8 @@
 //  Copyright © 2016年 looperwang. All rights reserved.
 //
 
+#define SERVER_IP @"10.67.55.60:8080"
+
 #import <Foundation/Foundation.h>
 
 @interface DataService : NSObject

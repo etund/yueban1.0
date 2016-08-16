@@ -11,7 +11,10 @@
 #import "AFNetworking.h"
 #import "SongInfo.h"
 
-#define SERVER_INFO @"http://10.67.55.60:8080/Foundation/yueban!"
+//#define SERVER_INFO @"http://10.67.55.60:8080/Foundation/yueban!"
+
+
+
 
 @implementation DataService
 
@@ -36,7 +39,8 @@
     
     manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/json", @"text/json", @"text/javascript", @"text/html", nil];
     
-    [manager GET:[SERVER_INFO stringByAppendingString:@"querySongList.do"]
+    NSString * serverInfo = [NSString stringWithFormat:@"http://%@/Foundation/yueban!",SERVER_IP];
+    [manager GET:[serverInfo stringByAppendingString:@"querySongList.do"]
        parameters:nil
           success:^(AFHTTPRequestOperation *operation, id responseObject) {
               
@@ -124,7 +128,8 @@
                              @"songsId" : songs,
                              @"tags" : tags};
     
-    [manager POST:[SERVER_INFO stringByAppendingString:@"djStart.do"]
+    NSString * serverInfo = [NSString stringWithFormat:@"http://%@/Foundation/yueban!",SERVER_IP];
+    [manager POST:[serverInfo stringByAppendingString:@"djStart.do"]
        parameters:params
           success:^(AFHTTPRequestOperation *operation, id responseObject) {
 //              NSString *str = [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding];
